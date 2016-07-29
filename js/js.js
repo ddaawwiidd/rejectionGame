@@ -5,7 +5,8 @@ var score= [];
 
 //function to load values saved in local storage to the page
 function get(){
-	//loads local storage variables and parse it from JSON
+	if(localStorage.getItem("qAccSave") !==null && localStorage.getItem("qRejSave") !==null && localStorage.getItem("points") !==null){
+		//loads local storage variables and parse it from JSON
 	//to an array
 	qAccepted = JSON.parse(localStorage.getItem("qAccSave"));
 	qRejected = JSON.parse(localStorage.getItem("qRejSave"));
@@ -16,6 +17,8 @@ function get(){
 	document.getElementById("acceptedQ").innerHTML = qAccepted.join("<br/>");
 	document.getElementById("rejectedQ").innerHTML = qRejected.join("<br/>");
 	document.getElementById("points").innerHTML = score.reduce((a, b) => a + b, 0);
+	}
+	
 }
 
 //function to store accepted question
