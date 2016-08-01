@@ -7,16 +7,18 @@ var score= [];
 function get(){
 	if(localStorage.getItem("qAccSave") !==null && localStorage.getItem("qRejSave") !==null && localStorage.getItem("points") !==null){
 		//loads local storage variables and parse it from JSON
-	//to an array
-	qAccepted = JSON.parse(localStorage.getItem("qAccSave"));
-	qRejected = JSON.parse(localStorage.getItem("qRejSave"));
-	score.push(parseInt(localStorage.getItem("points")));
-	console.log(score);
-	console.log(qAccepted);
-	console.log(qRejected);
-	document.getElementById("acceptedQ").innerHTML = qAccepted.join("<br/>");
-	document.getElementById("rejectedQ").innerHTML = qRejected.join("<br/>");
-	document.getElementById("points").innerHTML = score.reduce((a, b) => a + b, 0);
+		//to an array
+		qAccepted = JSON.parse(localStorage.getItem("qAccSave"));
+		qRejected = JSON.parse(localStorage.getItem("qRejSave"));
+		score.push(parseInt(localStorage.getItem("points")));
+		console.log(score);
+		console.log(qAccepted);
+		console.log(qRejected);
+		document.getElementById("acceptedQ").innerHTML = qAccepted.join("<br/>");
+		document.getElementById("rejectedQ").innerHTML = qRejected.join("<br/>");
+		document.getElementById("points").innerHTML = score.reduce((a, b) => a + b, 0);
+	} else {
+		document.getElementById("points").innerHTML = 0;
 	}
 	
 }
@@ -75,4 +77,9 @@ function save(){
 	//local storage can store only strings
 	localStorage.setItem("qAccSave",JSON.stringify(qAccepted));
 	localStorage.setItem("qRejSave",JSON.stringify(qRejected));
+}
+//function clears local storage and reloads current page
+function clearStorage(){
+	localStorage.clear();
+	location.reload();
 }
