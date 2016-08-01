@@ -11,9 +11,6 @@ function get(){
 		qAccepted = JSON.parse(localStorage.getItem("qAccSave"));
 		qRejected = JSON.parse(localStorage.getItem("qRejSave"));
 		score.push(parseInt(localStorage.getItem("points")));
-		console.log(score);
-		console.log(qAccepted);
-		console.log(qRejected);
 		document.getElementById("acceptedQ").innerHTML = qAccepted.join("<br/>");
 		document.getElementById("rejectedQ").innerHTML = qRejected.join("<br/>");
 		document.getElementById("points").innerHTML = score.reduce((a, b) => a + b, 0);
@@ -31,9 +28,7 @@ function storeAccepted(){
 	if(document.getElementById("question").value != ''){
 		//adds new score to score array
 		score.push(1);
-		console.log(score);
 		qAccepted.push(document.getElementById("question").value);
-		console.log(qAccepted);
 		//prints array qAccepted to the page
 		document.getElementById("acceptedQ").innerHTML = qAccepted.join("<br/>");
 		//prints sum of scores from array score
@@ -52,10 +47,8 @@ function storeRejected(){
 	if(document.getElementById("question").value != ''){
 		//adds new score to score array
 		score.push(10);
-		console.log(score);
 		//adds new question value from the input field to qAccepted array
 		qRejected.push(document.getElementById("question").value);
-		console.log(qRejected);
 		//prints array qRejected to the page
 		document.getElementById("rejectedQ").innerHTML = qRejected.join("<br/>");
 		//prints sum of scores from array score
@@ -70,7 +63,6 @@ function storeRejected(){
 function save(){
 	//saves score from score array in local storage
 	var pointsResult = score.reduce((a, b) => a + b, 0);
-	console.log(pointsResult);
 	localStorage.setItem("points", pointsResult);
 	//saves values of questions in assigned local storage
 	//before saving transforms array elements into JSON
